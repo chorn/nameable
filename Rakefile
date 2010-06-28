@@ -9,7 +9,7 @@ GEM_VERSION = "0.1.0"
 AUTHOR = "Chris Horn"
 EMAIL = "chorn@chorn.com"
 HOMEPAGE = "http://github.com/chorn/nameable"
-SUMMARY = "A gem that provides parsing and output of phone numbers according to NANPA standards."
+SUMMARY = "A ruby library to parse people names into parts and reformat them."
 
 spec = Gem::Specification.new do |s|
   s.name = GEM

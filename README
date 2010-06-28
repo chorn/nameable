@@ -7,7 +7,15 @@ References: http://www.onlineaspect.com/2009/08/17/splitting-names/
 
 require "nameable"
 
+n = Nameable::Latin.new.parse("Mr. Chris K Horn Esquire")
 
+puts n.prefix
+puts n.first
+puts n.middle
+puts n.last
+puts n.suffix
+
+puts n.to_fullname
 
 
 -chorn
