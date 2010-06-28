@@ -1,0 +1,3 @@
+== nameable
+
+A gem that provides parsing and output of people's names.

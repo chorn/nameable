@@ -1,0 +1,13 @@
+
+A person's name is trivial when you validate the input at data entry
+time.  That is not always possible, and for my enterprise it is almost
+never possible.
+
+References: http://www.onlineaspect.com/2009/08/17/splitting-names/
+
+require "nameable"
+
+
+
+
+-chorn
