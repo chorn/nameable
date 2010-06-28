@@ -4,11 +4,11 @@ require 'rubygems/specification'
 require 'date'
 require 'spec/rake/spectask'
 
-GEM = "dialable"
-GEM_VERSION = "0.0.1"
+GEM = "nameable"
+GEM_VERSION = "0.1.0"
 AUTHOR = "Chris Horn"
 EMAIL = "chorn@chorn.com"
-HOMEPAGE = "http://github.com/chorn/dialable"
+HOMEPAGE = "http://github.com/chorn/nameable"
 SUMMARY = "A gem that provides parsing and output of phone numbers according to NANPA standards."
 
 spec = Gem::Specification.new do |s|
