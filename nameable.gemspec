@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name     = "nameable"
-  s.version  = "0.1.1"
+  s.version  = "0.1.2"
   s.date     = "2010-06-28"
   s.summary  = "Provides parsing and output of person names."
   s.email    = "chorn@chorn.com"
@@ -9,7 +9,6 @@ Gem::Specification.new do |s|
   s.has_rdoc = true
   s.authors  = ["Chris Horn"]
   s.files    = [ "LICENSE",
-                 "README",
                  "README.rdoc",
                  "Rakefile",
                  "TODO",

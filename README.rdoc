@@ -1,3 +1,24 @@
 == nameable
 
 A gem that provides parsing and output of people's names.
+
+A person's name is trivial when you validate the input at data entry
+time.  That is not always possible, and for my enterprise it is almost
+never possible.
+
+References: http://www.onlineaspect.com/2009/08/17/splitting-names/
+
+require "nameable"
+
+n = Nameable::Latin.new.parse("Mr. Chris K Horn Esquire")
+
+puts n.prefix
+puts n.first
+puts n.middle
+puts n.last
+puts n.suffix
+
+puts n.to_fullname
+
+
+-chorn
