@@ -17,7 +17,14 @@ Chris O'Horn
 Chris McHorn
 Chris Von Horn
 Chris O' Horn
-Chris K Horn - Horn
+Chris K Horn
+Chris K. Horn
+Chris Horn - Horn
+Chris Ole Biscuit Barrel Horn
 CHRIS HORN
 CHRIS-HORN
 CHRIS;HORN
+Horn, Chris
+Horn, Chris K.
+Horn, Chris K. DDS
+Chris Horn, Ph.D. DB CCNE

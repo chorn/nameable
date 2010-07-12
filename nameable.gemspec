@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name     = "nameable"
-  s.version  = "0.1.2"
-  s.date     = "2010-06-28"
+  s.version  = "0.2.0"
+  s.date     = "2010-07-12"
   s.summary  = "Provides parsing and output of person names."
   s.email    = "chorn@chorn.com"
   s.homepage = "http://github.com/chorn/nameable"

@@ -15,27 +15,27 @@ module Nameable
     # Regex's to match the detritus that people add to their names
     module Patterns
       PREFIX = {
-        "Mr." => /^\(*(mr\.*|mister)\)*$/i,
-        "Mrs." => /^\(*(mrs\.*|misses)\)*$/i,
-        "Ms." => /^\(*(ms\.*|miss)\)*$/i,
-        "Dr." => /^\(*(dr\.*|doctor)\)*$/i,
-        "Rev." => /^\(*(rev\.*|reverand)\)*$/i,
-        "Fr." => /^\(*(fr\.*|friar)\)*$/i,
+        "Mr."    => /^\(*(mr\.*|mister)\)*$/i,
+        "Mrs."   => /^\(*(mrs\.*|misses)\)*$/i,
+        "Ms."    => /^\(*(ms\.*|miss)\)*$/i,
+        "Dr."    => /^\(*(dr\.*|doctor)\)*$/i,
+        "Rev."   => /^\(*(rev\.*|reverand)\)*$/i,
+        "Fr."    => /^\(*(fr\.*|friar)\)*$/i,
         "Master" => /^\(*(master)\)*$/i,
-        "Sir" => /^\(*(sir)\)*$/i
+        "Sir"    => /^\(*(sir)\)*$/i
       }
 
       SUFFIX = {
-        "Sr." => /^\(*(sr\.|senior)\)*$/i,
-        "Jr." => /^\(*(jr\.|junior)\)*$/i,
-        "Esq." => /^\(*(esq\.|esquire)\)*$/i,
-        "PhD." => /^\(*(phd\.)\)*$/i
+        "Sr."   => /^\(*(sr\.|senior)\)*$/i,
+        "Jr."   => /^\(*(jr\.|junior)\)*$/i,
+        "Esq."  => /^\(*(esq\.|esquire)\)*$/i,
+        "Ph.D." => /^\(*(phd\.?)\)*$/i
       }
 
       SUFFIX_GENERATIONAL_ROMAN = /^\(*[IVX\.]+\)*$/i
       SUFFIX_ACADEMIC = /^(APR|RPh|MD|MA|DMD|DDS|PharmD|EngD|DPhil|JD|DD|DO|BA|BS|BSc|BE|BFA|MA|MS|MSc|MFA|MLA|MBA)$/i
       SUFFIX_PROFESSIONAL = /^(PE|CSA|CPA|CPL|CME|CEng|OFM|CSV|Douchebag)$/i
-      SUFFIX_ABBREVIATION = /^[A-Z\.]+$/
+      SUFFIX_ABBREVIATION = /^[A-Z\.]+[A-Z\.]+$/  # It should be at least 2 letters
 
       LAST_NAME_PRE_DANGLERS = /^(vere|von|van|de|del|della|di|da|pietro|vanden|du|st|la|ter|ten)$/i
       LAST_NAME_PRE_CONCATS = /^(o'|o`|mc)$/i
@@ -128,7 +128,7 @@ module Nameable
           @last = "#{name[n-1]}-#{@last}"
           name[n-1] = nil
         else
-          @middle = name[n]
+          @middle = @middle ? "#{name[n]} #{@middle}" : name[n]
         end
 
         name.delete_at(n)
@@ -140,7 +140,13 @@ module Nameable
 
     def parse(name)
       if name.class == String
-        name = name.split(/\s+/)
+        if name.index(',')
+          name = "#{$2} #{$1}" if name =~ /^([a-z]+),(.*)/i
+
+          #name = "#{$2} #{$1}" if name =~ /^([a-z]+),(.*)/i
+        end
+
+        name = name.strip.split(/\s+/)
       end
 
       name = name.first.split(/[^[:alnum:]]+/) if name.size == 1 and name.first.split(/[^[:alnum:]]+/)
@@ -157,7 +163,7 @@ module Nameable
     end
 
     def to_s
-      [@prefix, @first, @middle, @last, @suffix].compact.join(' ')
+      [@prefix, @first, @middle, @last].compact.join(' ') + (@suffix ? ", #{@suffix}" : "")
     end
 
     def to_name
@@ -165,7 +171,7 @@ module Nameable
     end
 
     def to_fullname
-      [@prefix, @first, @middle, @last, @suffix].compact.join(' ')
+      to_s
     end
 
     def to_nameable
