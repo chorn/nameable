@@ -1,4 +1,4 @@
-# Copyright (c) 2010 Chris Horn http://chorn.com/
+# Copyright (c) 2012 Chris Horn http://chorn.com/
 # See MIT-LICENSE.txt
 
 # TODO: Make this less sucky.
@@ -78,7 +78,11 @@ module Nameable
           suff = pretty if name[n] =~ regex
         end
 
-        if name[n] =~ Patterns::SUFFIX_ACADEMIC or name[n] =~ Patterns::SUFFIX_PROFESSIONAL or name[n] =~ Patterns::SUFFIX_GENERATIONAL_ROMAN or name[n] =~ Patterns::SUFFIX_ABBREVIATION
+        if name[n] =~ Patterns::SUFFIX_ACADEMIC or name[n] =~ Patterns::SUFFIX_PROFESSIONAL or name[n] =~ Patterns::SUFFIX_GENERATIONAL_ROMAN
+          suff = name[n].upcase.gsub(/\./,'')
+        end
+
+        if name.join != name.join.upcase and name[n].length > 1 and name[n] =~ Patterns::SUFFIX_ABBREVIATION
           suff = name[n].upcase.gsub(/\./,'')
         end
         
@@ -139,11 +143,10 @@ module Nameable
     end
 
     def parse(name)
+      raise InvalidNameError unless name
       if name.class == String
         if name.index(',')
           name = "#{$2} #{$1}" if name =~ /^([a-z]+),(.*)/i
-
-          #name = "#{$2} #{$1}" if name =~ /^([a-z]+),(.*)/i
         end
 
         name = name.strip.split(/\s+/)

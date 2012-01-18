@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 require "rubygems"
-require "lib/nameable"
+require "./lib/nameable"
 
 DATA.each do |testcase|
   n = Nameable::Latin.new.parse(testcase)
@@ -9,6 +9,8 @@ DATA.each do |testcase|
 end
 
 __END__
+HORN, CHRIS K
+HORN, CHRIS K.
 Mr. Chris Horn PhD
 Chris Horn T.I.T.L.E.
 Chris Horn II
@@ -25,6 +27,7 @@ CHRIS HORN
 CHRIS-HORN
 CHRIS;HORN
 Horn, Chris
+Horn, Chris K
 Horn, Chris K.
 Horn, Chris K. DDS
 Chris Horn, Ph.D. DB CCNE
