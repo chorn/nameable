@@ -26,9 +26,9 @@ module Nameable
       }
 
       SUFFIX = {
-        "Sr."   => /^\(*(sr\.|senior)\)*$/i,
-        "Jr."   => /^\(*(jr\.|junior)\)*$/i,
-        "Esq."  => /^\(*(esq\.|esquire)\)*$/i,
+        "Sr."   => /^\(*(sr\.?|senior)\)*$/i,
+        "Jr."   => /^\(*(jr\.?|junior)\)*$/i,
+        "Esq."  => /^\(*(esq\.?|esquire)\)*$/i,
         "Ph.D." => /^\(*(phd\.?)\)*$/i
       }
 
@@ -146,7 +146,7 @@ module Nameable
       raise InvalidNameError unless name
       if name.class == String
         if name.index(',')
-          name = "#{$2} #{$1}" if name =~ /^([a-z]+),(.*)/i
+          name = "#{$2} #{$1}" if name =~ /^([a-z]+)\s*,\s*,*(.*)/i
         end
 
         name = name.strip.split(/\s+/)

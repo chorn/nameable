@@ -1,0 +1,11 @@
+0.4.2:
+Allow for multiple commas/spaces for the last name, first name format.
+
+0.4.1:
+A period after Jr. or Sr. as a generational title is no longer necessary.
+
+0.4.0:
+
+Fixed a bug for these patterns:
+HORN, CHRIS K
+HORN, CHRIS K.
