@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name     = "nameable"
-  s.version  = "0.4.2"
-  s.date     = "2012-01-23"
+  s.version  = "0.5.0"
+  s.date     = "2012-06-06"
   s.summary  = "Provides parsing and output of person names."
   s.email    = "chorn@chorn.com"
   s.homepage = "http://github.com/chorn/nameable"
@@ -17,7 +17,9 @@ Gem::Specification.new do |s|
                  "script/destroy",
                  "script/generate",
                  "spec/nameable_spec.rb",
-                 "spec/spec_helper.rb"
+                 "spec/spec_helper.rb",
+                 "examples/test.rb",
+                 "examples/nameable_web_service.rb"
                  ]
   s.test_files = []
   s.rdoc_options = []

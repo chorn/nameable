@@ -37,8 +37,10 @@ module Nameable
       SUFFIX_PROFESSIONAL = /^(PE|CSA|CPA|CPL|CME|CEng|OFM|CSV|Douchebag)$/i
       SUFFIX_ABBREVIATION = /^[A-Z\.]+[A-Z\.]+$/  # It should be at least 2 letters
 
-      LAST_NAME_PRE_DANGLERS = /^(vere|von|van|de|del|della|di|da|pietro|vanden|du|st|la|ter|ten)$/i
-      LAST_NAME_PRE_CONCATS = /^(o'|o`|mc)$/i
+      LAST_NAME_PRE_DANGLERS = /^(mc|vere|von|van|da|de|del|della|di|da|pietro|vanden|du|st|la|ter|ten)$/i
+      O_LAST_NAME_PRE_CONCATS = /^(o'|o`)$/i
+      # MC_LAST_NAME_PRE_CONCAT = /^(mc|da|de)$/i
+      # ST_LAST_NAME_PRE_CONCAT = /^(st)\.*$/i
     end
 
     attr_accessor :prefix, :first, :middle, :last, :suffix
@@ -85,7 +87,7 @@ module Nameable
         if name.join != name.join.upcase and name[n].length > 1 and name[n] =~ Patterns::SUFFIX_ABBREVIATION
           suff = name[n].upcase.gsub(/\./,'')
         end
-        
+
         if suff
           @suffix = @suffix ? "#{suff}, #{@suffix}" : suff
           name.delete_at(n)
@@ -123,11 +125,15 @@ module Nameable
 
       (name.size - 1).downto(0) do |n|
         next unless name[n]
-        
+
         if name[n] =~ Patterns::LAST_NAME_PRE_DANGLERS
-          @last = "#{name[n]} #{@last}"
-        elsif name[n] =~ Patterns::LAST_NAME_PRE_CONCATS
+          @last = "#{name[n].downcase.capitalize} #{@last}"
+        elsif name[n] =~ Patterns::O_LAST_NAME_PRE_CONCATS
           @last = "O'#{@last}"
+        # elsif name[n] =~ Patterns::MC_LAST_NAME_PRE_CONCAT
+        #   @last = "#{name[n].downcase.capitalize} #{@last}"
+        # elsif name[n] =~ Patterns::ST_LAST_NAME_PRE_CONCAT
+        #   @last = "St. #{@last}"
         elsif name[n] =~ /-+/ and n > 0 and name[n-1]
           @last = "#{name[n-1]}-#{@last}"
           name[n-1] = nil
@@ -177,10 +183,30 @@ module Nameable
       to_s
     end
 
+    def to_prefix
+      @prefix
+    end
+
+    def to_firstname
+      @first
+    end
+
+    def to_lastname
+      @last
+    end
+
+    def to_middlename
+      @middle
+    end
+
+    def to_suffix
+      @suffix
+    end
+
     def to_nameable
       [@first, @last].compact.join(' ')
     end
-  
+
     def to_hash
       return {
         :prefix => @prefix,
@@ -190,5 +216,5 @@ module Nameable
         :suffix => @suffix
       }
     end
-  end  
+  end
 end
