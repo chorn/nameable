@@ -1,57 +1,39 @@
+# encoding: utf-8
+
 require 'rubygems'
-require 'rake/gempackagetask'
-require 'rubygems/specification'
-require 'date'
-require 'spec/rake/spectask'
+require 'bundler'
+begin
+  Bundler.setup(:default, :development)
+rescue Bundler::BundlerError => e
+  $stderr.puts e.message
+  $stderr.puts "Run `bundle install` to install missing gems"
+  exit e.status_code
+end
+require 'rake'
 
-GEM = "nameable"
-GEM_VERSION = "0.5.0"
-AUTHOR = "Chris Horn"
-EMAIL = "chorn@chorn.com"
-HOMEPAGE = "http://github.com/chorn/nameable"
-SUMMARY = "A ruby library to parse people names into parts and reformat them."
+require 'jeweler'
+Jeweler::Tasks.new do |gem|
+  gem.name        = "nameable"
+  gem.homepage    = "https://github.com/chorn/nameable"
+  gem.license     = "MIT"
+  gem.summary     = %Q{Provides parsing and output of person names.}
+  gem.description = %Q{A gem that provides parsing and output of person names.}
+  gem.email       = "chorn@chorn.com"
+  gem.authors     = ["Chris Horn"]
+  gem.files       = FileList['lib/**/*.rb', 'Gemfile*', '[A-Z]*', 'Rakefile', 'spec/*', 'examples/*'].to_a
+end
+Jeweler::RubygemsDotOrgTasks.new
 
-spec = Gem::Specification.new do |s|
-  s.name = GEM
-  s.version = GEM_VERSION
-  s.platform = Gem::Platform::RUBY
-  s.has_rdoc = true
-  s.extra_rdoc_files = ["README", "LICENSE", 'TODO']
-  s.summary = SUMMARY
-  s.description = s.summary
-  s.author = AUTHOR
-  s.email = EMAIL
-  s.homepage = HOMEPAGE
+require 'rspec/core'
+require 'rspec/core/rake_task'
+RSpec::Core::RakeTask.new(:spec) do |spec|
+  spec.pattern = FileList['spec/**/*_spec.rb']
+end
 
-  # Uncomment this to add a dependency
-  # s.add_dependency "foo"
-
-  s.require_path = 'lib'
-  s.autorequire = GEM
-  s.files = %w(LICENSE README Rakefile TODO) + Dir.glob("{lib,spec}/**/*")
+RSpec::Core::RakeTask.new(:rcov) do |spec|
+  spec.pattern = 'spec/**/*_spec.rb'
+  spec.rcov = true
 end
 
 task :default => :spec
 
-desc "Run specs"
-Spec::Rake::SpecTask.new do |t|
-  t.spec_files = FileList['spec/**/*_spec.rb']
-  t.spec_opts = %w(-fs --color)
-end
-
-
-Rake::GemPackageTask.new(spec) do |pkg|
-  pkg.gem_spec = spec
-end
-
-desc "install the gem locally"
-task :install => [:package] do
-  sh %{sudo gem install pkg/#{GEM}-#{GEM_VERSION}}
-end
-
-desc "create a gemspec file"
-task :make_spec do
-  File.open("#{GEM}.gemspec", "w") do |file|
-    file.puts spec.to_ruby
-  end
-end

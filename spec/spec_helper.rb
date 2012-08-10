@@ -1,10 +1,9 @@
-$LOAD_PATH.push File.join(File.dirname(__FILE__), '..', 'lib')
-
-require "rubygems"
-require "spec"
-require "active_support"
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
+$LOAD_PATH.unshift(File.dirname(__FILE__))
+require "bundler/setup"
+Bundler.require(:test)
 require "nameable"
 
-Spec::Runner.configure do |config|
+RSpec.configure do |config|
   # config.mock_with :mocha
 end
