@@ -1,0 +1,16 @@
+language: ruby
+script: "bundle exec rspec"
+rvm:
+  - 2.1.2
+  - 2.1.0
+  - 2.0.0
+  - 1.9.3
+  - ruby-head
+  - jruby
+  - rbx
+notifications:
+  irc:
+    channels:
+      - "chat.freenode.net#chorn"
+    on_success: change
+    on_failure: always
