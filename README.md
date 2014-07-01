@@ -1,5 +1,8 @@
 # nameable
 
+[![Gem Version](https://badge.fury.io/rb/nameable.svg)](http://badge.fury.io/rb/nameable)
+[![Build Status](https://travis-ci.org/chorn/nameable.svg?branch=master)](https://travis-ci.org/chorn/nameable)
+
 A library that provides parsing and normalization of people's names.
 
 ```ruby
