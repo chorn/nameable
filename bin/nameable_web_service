@@ -9,7 +9,7 @@ require "nameable"
 
 get '/*/*.*' do |raw_name, function, type|
   begin
-    name = Nameable::Latin.new.parse(raw_name)
+    name = Nameable(raw_name)
   rescue Nameable::Latin::InvalidNameError
     ""
   end
