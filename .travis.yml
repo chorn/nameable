@@ -6,8 +6,7 @@ rvm:
   - 2.1.0
   - 2.0.0
   - 1.9.3
-  - ruby-head
-  - jruby-head
+  - jruby-1.7.11
 notifications:
   irc:
     channels:
