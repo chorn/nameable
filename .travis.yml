@@ -1,14 +1,8 @@
 language: ruby
 cache: bundler
-script: "bundle exec rspec"
+script: "CODECLIMATE_REPO_TOKEN=37747422702aa096c2800ec5e40b3ff62eea5b36ccfff58772f6383c69c9263e bundle exec rspec"
 rvm:
-  - 2.1.2
-  - 2.1.0
+  - 2.2.2
+  - 2.1.6
   - 2.0.0
   - 1.9.3
-notifications:
-  irc:
-    channels:
-      - "chat.freenode.net#chorn"
-    on_success: change
-    on_failure: always
