@@ -1,4 +1,5 @@
 require "nameable/version"
+require "nameable/assets"
 require "nameable/error"
 require "nameable/latin"
 require "nameable/extensions"
