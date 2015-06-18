@@ -56,7 +56,7 @@ By inspiration, I should really say "other projects from which I yanked their co
 * [Open Refine](http://openrefine.org/) formerly [Google Refine](https://code.google.com/p/google-refine/)
 * [Help with splitting names](http://www.onlineaspect.com/2009/08/17/splitting-names/)
 * [First Names from the U.S. SSA](http://www.ssa.gov/oact/babynames/limits.html)
-* [Last Names from the Census](http://www.census.gov/genealogy/www/data/2000surnames/index.html)
+* [Last Names from the Census](http://www.census.gov/topics/population/genealogy/data/2000_surnames.html)
 * [Data Science Toolkit](https://github.com/petewarden/dstk)
 * [Addressable](https://github.com/sporkmonger/addressable)
 

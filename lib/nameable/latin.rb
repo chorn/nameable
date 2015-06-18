@@ -138,10 +138,10 @@ module Nameable
     end
 
     # http://www.ssa.gov/oact/babynames/limits.html
-    def load_huge_gender_table
+    def load_huge_gender_table(gender_table=Nameable::Assets::GENDER_TABLE)
       ranked = {}
 
-      CSV.read(File.expand_path(File.join('..', '..', '..', 'data', 'yob2013.txt'), __FILE__)).each do |first, gender, rank|
+      CSV.read(gender_table).each do |first, gender, rank|
         first.downcase!
         gender.downcase!
         ranked[first] = {} unless ranked[first]
