@@ -24,11 +24,11 @@ Gem::Specification.new do |spec|
     spec.cert_chain = ['certs/chorn.pem']
   end
 
-  spec.add_development_dependency 'bundler', '~> 1.6', '>= 1.6.2'
+  spec.add_development_dependency 'bundler', '~> 1.6'
   spec.add_development_dependency 'codeclimate-test-reporter', '~> 0.4'
-  spec.add_development_dependency 'guard', '~> 2.12', '>= 2.12.6'
+  spec.add_development_dependency 'guard', '~> 2.12'
   spec.add_development_dependency 'guard-bundler', '~> 2.1'
   spec.add_development_dependency 'guard-rspec', '~> 4.5'
   spec.add_development_dependency 'rake', '~> 10.4'
-  spec.add_development_dependency 'rspec', '~> 3.2'
+  spec.add_development_dependency 'rspec', '~> 3.3'
 end
