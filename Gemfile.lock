@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    nameable (1.1.0)
+    nameable (1.1.1)
 
 GEM
   remote: https://rubygems.org/
@@ -93,10 +93,10 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 1.6, >= 1.6.2)
-  codeclimate-test-reporter (~> 0.4.7)
-  guard (~> 2.12.6)
-  guard-bundler (~> 2.1.0)
-  guard-rspec (~> 4.5.2)
+  codeclimate-test-reporter (~> 0.4)
+  guard (~> 2.12, >= 2.12.6)
+  guard-bundler (~> 2.1)
+  guard-rspec (~> 4.5)
   nameable!
-  rake (~> 10.4.2)
-  rspec (~> 3.2.0)
+  rake (~> 10.4)
+  rspec (~> 3.2)
