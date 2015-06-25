@@ -22,8 +22,6 @@ Gem::Specification.new do |spec|
   if File.file?(signing_key)
     spec.signing_key = signing_key
     spec.cert_chain = ['certs/chorn.pem']
-  else
-    warn "Building an unsigned gem."
   end
 
   spec.add_development_dependency 'bundler', '~> 1.6', '>= 1.6.2'
