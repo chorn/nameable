@@ -152,7 +152,7 @@ describe Nameable::Latin do
       end
     end
 
-    %w{Fr Fr. Friar}.each do |prefix|
+    %w{Fr Fr. Friar Father}.each do |prefix|
       it prefix do
         expect(Nameable::Latin.new.parse("#{prefix} Chris Horn").prefix).to eq('Fr.')
       end
