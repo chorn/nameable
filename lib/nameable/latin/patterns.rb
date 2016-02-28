@@ -7,7 +7,7 @@ module Nameable
         "Capt."  => /^\(*(capt\.*|captain)\)*$/i,
         "Dame"   => /^\(*(dame)\)*$/i,
         "Dr."    => /^\(*(dr\.*|doctor)\)*$/i,
-        "Fr."    => /^\(*(fr\.*|friar)\)*$/i,
+        "Fr."    => /^\(*(fr\.*|friar|father)\)*$/i,
         "Hon."	 => /^\(*(hon\.*|honorable)\)*$/i,
         "Imam"   => /^\(*(imam)\)*$/i,
         "Ofc."   => /^\(*(ofc\.*|officer)\)*$/i,
@@ -17,7 +17,6 @@ module Nameable
         "Ms."    => /^\(*(ms\.*|miss)\)*$/i,
         "Dr."    => /^\(*(dr\.*|doctor)\)*$/i,
         "Rev."   => /^\(*(rev\.*|reverend)\)*$/i,
-        "Fr."    => /^\(*(fr\.*|friar)\)*$/i,
         "Master" => /^\(*(master)\)*$/i,
         "Rabbi"  => /^\(*(rabbi)\)*$/i,
         "Sir"    => /^\(*(sir)\)*$/i
