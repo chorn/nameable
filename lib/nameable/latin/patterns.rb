@@ -4,6 +4,14 @@ module Nameable
     # Regex's to match the detritus that people add to their names
     module Patterns
       PREFIX = {
+        "Capt."  => /^\(*(capt\.*|captain)\)*$/i,
+        "Dame"   => /^\(*(dame)\)*$/i,
+        "Dr."    => /^\(*(dr\.*|doctor)\)*$/i,
+        "Fr."    => /^\(*(fr\.*|friar)\)*$/i,
+        "Hon."	 => /^\(*(hon\.*|honorable)\)*$/i,
+        "Imam"   => /^\(*(imam)\)*$/i,
+        "Ofc."   => /^\(*(ofc\.*|officer)\)*$/i,
+        "Master" => /^\(*(master)\)*$/i,
         "Mr."    => /^\(*(mr\.*|mister)\)*$/i,
         "Mrs."   => /^\(*(mrs\.*|misses)\)*$/i,
         "Ms."    => /^\(*(ms\.*|miss)\)*$/i,
@@ -11,6 +19,7 @@ module Nameable
         "Rev."   => /^\(*(rev\.*|reverend)\)*$/i,
         "Fr."    => /^\(*(fr\.*|friar)\)*$/i,
         "Master" => /^\(*(master)\)*$/i,
+        "Rabbi"  => /^\(*(rabbi)\)*$/i,
         "Sir"    => /^\(*(sir)\)*$/i
       }
 
