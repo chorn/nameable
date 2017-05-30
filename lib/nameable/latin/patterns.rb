@@ -8,7 +8,7 @@ module Nameable
         "Mrs."   => /^\(*(mrs\.*|misses)\)*$/i,
         "Ms."    => /^\(*(ms\.*|miss)\)*$/i,
         "Dr."    => /^\(*(dr\.*|doctor)\)*$/i,
-        "Rev."   => /^\(*(rev\.*|reverand)\)*$/i,
+        "Rev."   => /^\(*(rev\.*|reverend)\)*$/i,
         "Fr."    => /^\(*(fr\.*|friar)\)*$/i,
         "Master" => /^\(*(master)\)*$/i,
         "Sir"    => /^\(*(sir)\)*$/i
