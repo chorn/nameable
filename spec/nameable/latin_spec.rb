@@ -146,7 +146,7 @@ describe Nameable::Latin do
       end
     end
 
-    %w{Rev Rev. Reverand}.each do |prefix|
+    %w{Rev Rev. Reverend}.each do |prefix|
       it prefix do
         expect(Nameable::Latin.new.parse("#{prefix} Chris Horn").prefix).to eq('Rev.')
       end
