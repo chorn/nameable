@@ -64,6 +64,44 @@ describe Nameable::Latin do
     end
   end
 
+  context('last_name, first_name') do
+    subject(:n) { Nameable::Latin.new.parse("Horn, Chris") }
+    it '.prefix' do
+      expect(n.prefix).to be_nil
+    end
+    it '.first' do
+      expect(n.first).to eq('Chris')
+    end
+    it '.middle' do
+      expect(n.middle).to be_nil
+    end
+    it '.last' do
+      expect(n.last).to eq('Horn')
+    end
+    it '.suffix' do
+      expect(n.suffix).to be_nil
+    end
+  end
+
+  context('last_name, first_name,') do
+    subject(:n) { Nameable::Latin.new.parse("Horn, Chris,") }
+    it '.prefix' do
+      expect(n.prefix).to be_nil
+    end
+    it '.first' do
+      expect(n.first).to eq('Chris')
+    end
+    it '.middle' do
+      expect(n.middle).to be_nil
+    end
+    it '.last' do
+      expect(n.last).to eq('Horn')
+    end
+    it '.suffix' do
+      expect(n.suffix).to be_nil
+    end
+  end
+
   context('with a simple middle name') do
     subject(:n) { Nameable::Latin.new.parse("Chris Derp Horn") }
     it '.prefix' do
