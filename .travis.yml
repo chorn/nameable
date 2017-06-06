@@ -2,9 +2,8 @@ language: ruby
 cache: bundler
 script: bundle exec rspec
 rvm:
-- 2.3.1
-- 2.2.5
-- 2.1.9
-- 2.0.0
+- 2.4.1
+- 2.3.4
+- 2.2.7
 dd:
   secure: fzItORKaVrevTjQQu85FYgqgSVkRGG8PtOfNTCYY0meyP1+hF/lH6i5ZAb35VAuwi9InqaYnPx09dREBlfEqkzY/Ypxglq+EosAfqOgiKFu44JlM4vhxSdwn2mywCJpYZ0IbH5OnkF6rUULL/AoRQPlIV77eRqhB9LGfLNlYMfU=
