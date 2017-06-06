@@ -152,18 +152,35 @@ describe Nameable::Latin do
       end
     end
 
-    %w{Fr Fr. Friar}.each do |prefix|
+    %w{Fr Fr. Friar Father}.each do |prefix|
       it prefix do
         expect(Nameable::Latin.new.parse("#{prefix} Chris Horn").prefix).to eq('Fr.')
       end
     end
 
-    %w{Master Sir}.each do |prefix|
+    %w{Dame Rabbi Imam Master Sir}.each do |prefix|
       it prefix do
         expect(Nameable::Latin.new.parse("#{prefix} Chris Horn").prefix).to eq(prefix)
       end
     end
 
+    %w{Hon Hon. Honorable}.each do |prefix|
+      it prefix do
+        expect(Nameable::Latin.new.parse("#{prefix} Chris Horn").prefix).to eq('Hon.')
+      end
+    end
+
+    %w{Capt Capt. Captain}.each do |prefix|
+      it prefix do
+        expect(Nameable::Latin.new.parse("#{prefix} Chris Horn").prefix).to eq('Capt.')
+      end
+    end
+
+    %w{Ofc Ofc. Officer}.each do |prefix|
+      it prefix do
+        expect(Nameable::Latin.new.parse("#{prefix} Chris Horn").prefix).to eq('Ofc.')
+      end
+    end
   end
 
   context('suffix patterns (formatted)') do
