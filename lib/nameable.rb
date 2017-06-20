@@ -1,8 +1,8 @@
-require "nameable/version"
-require "nameable/assets"
-require "nameable/error"
-require "nameable/latin"
-require "nameable/extensions"
+require 'nameable/version'
+require 'nameable/error'
+require 'nameable/assets'
+require 'nameable/latin'
+require 'nameable/extensions'
 
 module Nameable
   def self.parse(name)
