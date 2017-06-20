@@ -1,0 +1,17 @@
+
+AllCops:
+  TargetRubyVersion: 2.2
+
+Style/Documentation:
+  Enabled: false
+
+Style/MethodName:
+  Exclude:
+    - lib/nameable/extensions.rb
+
+Metrics/LineLength:
+  Max: 132
+
+Metrics/BlockLength:
+  Exclude:
+    - spec/*/**

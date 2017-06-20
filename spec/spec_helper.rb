@@ -1,12 +1,11 @@
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
-require "bundler/setup"
+require 'bundler/setup'
 Bundler.require(:test)
+require 'simplecov'
+SimpleCov.start
 
-require "codeclimate-test-reporter"
-CodeClimate::TestReporter.start
-
-require "nameable"
+require 'nameable'
 
 RSpec.configure do |config|
 end

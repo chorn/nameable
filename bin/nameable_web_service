@@ -2,16 +2,16 @@
 
 # I use this with OpenRefine: http://openrefine.org/
 
-require "rubygems"
-require "json"
-require "sinatra"
-require "nameable"
+require 'rubygems'
+require 'json'
+require 'sinatra'
+require 'nameable'
 
 get '/*/*.*' do |raw_name, function, type|
   begin
     name = Nameable(raw_name)
   rescue Nameable::Latin::InvalidNameError
-    ""
+    ''
   end
 
   if type.to_sym == :json
