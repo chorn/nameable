@@ -20,10 +20,6 @@ describe Nameable::Latin do
   end
 
   describe '#parse' do
-    context 'with a single word name' do
-      it_behaves_like :generalized_parsing, 'Chris', [nil, 'Chris', nil, nil, nil]
-    end
-
     context 'with a simple first and last name' do
       it_behaves_like :generalized_parsing, 'Chris Horn', [nil, 'Chris', nil, 'Horn', nil]
     end
@@ -158,27 +154,27 @@ describe Nameable::Latin do
     end
   end
 
-  context 'gender' do
-    it 'Chris is more likely to be male' do
-      expect(Nameable::Latin.new.parse('Chris Horn').male?).to be true
-    end
-
-    it 'Janine is more likely to be female' do
-      expect(Nameable::Latin.new.parse('Janine Horn').female?).to be true
-    end
-
-    it 'Derp has :unknown gender' do
-      expect(Nameable::Latin.new.parse('Derp Horn').gender).to eq(:unknown)
-    end
-  end
-
-  context 'ethnicity' do
-    it 'Horn has a hash of ethnicity results' do
-      expect(Nameable::Latin.new.parse('Chris Horn').ethnicity).to be_a Hash
-    end
-
-    it "Horn's census :percent_white > 80% " do
-      expect(Nameable::Latin.new.parse('Chris Horn').ethnicity[:percent_white]).to be >= 80
-    end
-  end
+  # context 'gender' do
+  #   it 'Chris is more likely to be male' do
+  #     expect(Nameable::Latin.new.parse('Chris Horn').male?).to be true
+  #   end
+  #
+  #   it 'Janine is more likely to be female' do
+  #     expect(Nameable::Latin.new.parse('Janine Horn').female?).to be true
+  #   end
+  #
+  #   it 'Derp has :unknown gender' do
+  #     expect(Nameable::Latin.new.parse('Derp Horn').gender).to eq(:unknown)
+  #   end
+  # end
+  #
+  # context 'ethnicity' do
+  #   it 'Horn has a hash of ethnicity results' do
+  #     expect(Nameable::Latin.new.parse('Chris Horn').ethnicity).to be_a Hash
+  #   end
+  #
+  #   it "Horn's census :percent_white > 80% " do
+  #     expect(Nameable::Latin.new.parse('Chris Horn').ethnicity[:percent_white]).to be >= 80
+  #   end
+  # end
 end

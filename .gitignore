@@ -2,3 +2,6 @@
 *.gem
 coverage
 tags
+.envrc
+.ruby-version
+.tool-versions

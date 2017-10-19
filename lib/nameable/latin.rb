@@ -1,6 +1,7 @@
 require 'csv'
 require 'nameable/error'
 require 'nameable/latin/patterns'
+require 'nameable/parser'
 
 module Nameable
   class Latin
@@ -27,10 +28,10 @@ module Nameable
     ##
     # name is an Array
     def extract_prefix(name)
-      return unless name && name.size > 1 && @prefix.nil? && @first.nil?
+      return if prefix || first || name.nil? || name.size.zero?
       Nameable::Latin::Patterns::PREFIX.each do |pretty, regex|
-        next unless name.first =~ regex
-        @prefix = pretty
+        next unless name.first.match(regex)
+        self.prefix = pretty
         name.delete(name.first)
         break
       end
@@ -71,7 +72,7 @@ module Nameable
     ##
     # name is an Array
     def extract_first(name)
-      return unless name && name.size >= 1
+      return if first || name.nil? || name.size.zero?
 
       @first = name.first
       name.delete_at(0)
@@ -82,7 +83,7 @@ module Nameable
     ##
     # name is an Array
     def extract_last(name)
-      return unless name && name.size >= 1
+      return if last || name.nil? || name.size.zero?
 
       @last = name.last.gsub(/['`"]+/, "'").gsub(/-+/, '-')
       name.delete_at(name.size - 1)
@@ -93,7 +94,7 @@ module Nameable
     ##
     # name is an Array
     def extract_middle(name)
-      return unless name && name.size >= 1
+      return if middle || name.nil? || name.size.zero?
 
       (name.size - 1).downto(0) do |n|
         next unless name[n]
@@ -102,7 +103,7 @@ module Nameable
           @last = "#{name[n].downcase.capitalize} #{@last}"
         elsif name[n] =~ Nameable::Latin::Patterns::O_LAST_NAME_PRE_CONCATS
           @last = "O'#{@last}"
-        elsif name[n] =~ /\-/ && n > 0 && name[n - 1]
+        elsif name[n] =~ /-/ && n > 0 && name[n - 1]
           @last = "#{name[n - 1].delete('-')}-#{@last}"
           name[n - 1] = nil
         else
@@ -116,17 +117,11 @@ module Nameable
       @middle = "#{@middle}." if @middle && @middle.size == 1
     end
 
-    def parse(name)
-      raise InvalidNameError unless name
-      if name.class == String
-        if name.index(',')
-          name = "#{Regexp.last_match(2)} #{Regexp.last_match(1)}" if name =~ /^([a-z]+)\s*,\s*,*([^,]*)/i
-        end
+    def parse(input)
+      raise InvalidNameError unless input && !input.size.zero?
 
-        name = name.strip.split(/\s+/)
-      end
-
-      name = name.first.split(/[^[:alnum:]]+/) if name.size == 1 && name.first.split(/[^[:alnum:]]+/)
+      name = Nameable::Parser.parse_into_list(input)
+      # name = Nameable::Parser.extract_prefix(name)
 
       extract_prefix(name)
       extract_suffix(name)
@@ -201,7 +196,7 @@ module Nameable
     end
 
     def to_s
-      [@prefix, @first, @middle, @last].compact.join(' ') + (@suffix ? ", #{@suffix}" : '')
+      [prefix, first, middle, last].compact.join(' ') + (suffix ? ", #{suffix}" : '')
     end
 
     def to_name
@@ -213,36 +208,36 @@ module Nameable
     end
 
     def to_prefix
-      @prefix
+      prefix
     end
 
     def to_firstname
-      @first
+      first
     end
 
     def to_lastname
-      @last
+      last
     end
 
     def to_middlename
-      @middle
+      middle
     end
 
     def to_suffix
-      @suffix
+      suffix
     end
 
     def to_nameable
-      [@first, @last].compact.join(' ')
+      [first, last].compact.join(' ')
     end
 
     def to_hash
       {
-        prefix: @prefix,
-        first: @first,
-        middle: @middle,
-        last: @last,
-        suffix: @suffix
+        prefix: prefix,
+        first: first,
+        middle: middle,
+        last: last,
+        suffix: suffix
       }
     end
   end

@@ -8,4 +8,5 @@ module Nameable
   def self.parse(name)
     Nameable::Latin.new.parse(name)
   end
+
 end
