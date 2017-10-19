@@ -3,27 +3,27 @@ module Nameable
     # Regex's to match the detritus that people add to their names
     module Patterns
       PREFIX = {
-        'Capt.'  => /^\(*(capt\.*|captain)\)*$/i,
-        'Dame'   => /^\(*(dame)\)*$/i,
-        'Dr.'    => /^\(*(dr\.*|doctor)\)*$/i,
-        'Fr.'    => /^\(*(fr\.*|friar|father)\)*$/i,
-        'Hon.'	 => /^\(*(hon\.*|honorable)\)*$/i,
-        'Imam'   => /^\(*(imam)\)*$/i,
-        'Ofc.'   => /^\(*(ofc\.*|officer)\)*$/i,
-        'Mr.'    => /^\(*(mr\.*|mister)\)*$/i,
-        'Mrs.'   => /^\(*(mrs\.*|misses)\)*$/i,
-        'Ms.'    => /^\(*(ms\.*|miss)\)*$/i,
-        'Rev.'   => /^\(*(rev\.*|reverend)\)*$/i,
-        'Master' => /^\(*(master)\)*$/i,
-        'Rabbi'  => /^\(*(rabbi)\)*$/i,
-        'Sir'    => /^\(*(sir)\)*$/i
+        'Capt.'  => /^\(*(?<prefix>capt\.*|captain)\)*$/i,
+        'Dame'   => /^\(*(?<prefix>dame)\)*$/i,
+        'Dr.'    => /^\(*(?<prefix>dr\.*|doctor)\)*$/i,
+        'Fr.'    => /^\(*(?<prefix>fr\.*|friar|father)\)*$/i,
+        'Hon.'	 => /^\(*(?<prefix>hon\.*|honorable)\)*$/i,
+        'Imam'   => /^\(*(?<prefix>imam)\)*$/i,
+        'Ofc.'   => /^\(*(?<prefix>ofc\.*|officer)\)*$/i,
+        'Mr.'    => /^\(*(?<prefix>mr\.*|mister)\)*$/i,
+        'Mrs.'   => /^\(*(?<prefix>mrs\.*|misses)\)*$/i,
+        'Ms.'    => /^\(*(?<prefix>ms\.*|miss)\)*$/i,
+        'Rev.'   => /^\(*(?<prefix>rev\.*|reverend)\)*$/i,
+        'Master' => /^\(*(?<prefix>master)\)*$/i,
+        'Rabbi'  => /^\(*(?<prefix>rabbi)\)*$/i,
+        'Sir'    => /^\(*(?<prefix>sir)\)*$/i
       }.freeze
 
       SUFFIX = {
-        'Sr.'   => /^\(*(sr\.?|senior)\)*$/i,
-        'Jr.'   => /^\(*(jr\.?|junior)\)*$/i,
-        'Esq.'  => /^\(*(esq\.?|esquire)\)*$/i,
-        'Ph.D.' => /^\(*(p\.?h\.?d\.?)\)*$/i
+        'Sr.'   => /^\(*(?<suffix>sr\.?|senior)\)*$/i,
+        'Jr.'   => /^\(*(?<suffix>jr\.?|junior)\)*$/i,
+        'Esq.'  => /^\(*(?<suffix>esq\.?|esquire)\)*$/i,
+        'Ph.D.' => /^\(*(?<suffix>p\.?h\.?d\.?)\)*$/i
       }.freeze
 
       SUFFIX_GENERATIONAL_ROMAN = /^\(*[IVX.]+\)*$/i
