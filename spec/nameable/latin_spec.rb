@@ -156,6 +156,10 @@ describe Nameable::Latin do
         it_behaves_like :generalized_parsing, "Chris #{last}", [nil, 'Chris', nil, 'Horn-Derp', nil]
       end
     end
+
+    context 'with a hyphenated last name, first name' do
+      it_behaves_like :generalized_parsing, 'Horn-Derp, Chris', [nil, 'Chris', nil, 'Horn-Derp', nil]
+    end
   end
 
   context 'gender' do
