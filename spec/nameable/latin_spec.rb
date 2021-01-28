@@ -151,14 +151,20 @@ describe Nameable::Latin do
       end
     end
 
-    context 'with a hyphenated last name' do
-      ['Horn - Derp', 'Horn-Derp',  'Horn--Derp', 'Horn -- Derp'].each do |last|
-        it_behaves_like :generalized_parsing, "Chris #{last}", [nil, 'Chris', nil, 'Horn-Derp', nil]
-      end
-    end
 
-    context 'with a hyphenated last name, first name' do
-      it_behaves_like :generalized_parsing, 'Horn-Derp, Chris', [nil, 'Chris', nil, 'Horn-Derp', nil]
+    context 'with a hyphenated last name' do
+      hyphenated_last_names = ['Horn - Derp', 'Horn-Derp',  'Horn--Derp', 'Horn -- Derp']
+      context 'in standard order' do
+        hyphenated_last_names.each do |last|
+          it_behaves_like :generalized_parsing, "Chris #{last}", [nil, 'Chris', nil, 'Horn-Derp', nil]
+        end
+      end
+
+      context 'in last name, first name' do
+        hyphenated_last_names.each do |last|
+          it_behaves_like :generalized_parsing, "#{last}, Chris", [nil, 'Chris', nil, 'Horn-Derp', nil]
+        end
+      end
     end
   end
 
