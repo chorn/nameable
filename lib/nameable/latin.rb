@@ -120,7 +120,7 @@ module Nameable
       raise InvalidNameError unless name
       if name.class == String
         if name.index(',')
-          name = "#{Regexp.last_match(2)} #{Regexp.last_match(1)}" if name =~ /^([a-z]+)\s*,\s*,*([^,]*)/i
+          name = "#{Regexp.last_match(2)} #{Regexp.last_match(1)}" if name =~ /^([a-z]+(?:\s*-{1,2}\s*[a-z]+)*)\s*,\s*,*([^,]*)/i
         end
 
         name = name.strip.split(/\s+/)
